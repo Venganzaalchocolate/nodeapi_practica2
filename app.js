@@ -6,6 +6,8 @@ const logger = require('morgan');
 const utils =require('./lib/utils')
 const session = require('express-session')
 const LoginController=require('./controllers/loginController');
+const sessionAuth= require('./lib/sesionesControl')
+const MongoStore= require('connect-mongo');
 
 const app = express();
 
@@ -45,8 +47,15 @@ app.use(session({
   resave: false,
   cookie: {
     maxAge: 1000 * 60 * 60 * 24 * 2 // dos días sin entrar en el servicio 
-  }
+  },
+  store: MongoStore.create({mongoUrl: process.env.MONGODB_CONNECTION})
 }))
+
+// sesiones accesible a vistas
+app.use((req,res,next)=> {
+  res.locals.session=req.session;
+  next();
+});
 
 // variables globales de las vistas
 app.locals.title = 'NodeAPI';
@@ -56,7 +65,7 @@ const loginController = new LoginController();
 // rutas de mi webside
 app.use('/', require('./routes/index'));
 app.use('/prueba', require('./routes/prueba'));
-app.use('/privado', require('./routes/privado'));
+app.use('/privado', sessionAuth, require('./routes/privado'));
 app.use('/cambio-idioma', require('./routes/cambio-idioma'));
 app.use('/users', require('./routes/users'));
 
@@ -64,6 +73,7 @@ app.use('/users', require('./routes/users'));
 // se usa un controlador
 app.get('/login', loginController.index);
 app.post('/login', loginController.post);
+app.get('/logout', loginController.logout);
 
 
 // catch 404 and forward to error handler
