@@ -1,6 +1,8 @@
 // LLamo al módulo de mongoose
 const mongoose = require('mongoose');
-const bcrypt=require('bcrypt')
+const nodemailer = require('nodemailer')
+const emailTransportConfigure=require('../lib/emailTransportConfigure')
+const bcrypt=require('bcrypt');
 
 // esquema del usuario
 const usuarioEsquema=mongoose.Schema({
@@ -14,6 +16,23 @@ usuarioEsquema.statics.hashPassword= function(passwordEnClaro){
 
 usuarioEsquema.methods.compara = function(passwordEnClaro){
     return bcrypt.compare(passwordEnClaro, this.password);
+}
+
+usuarioEsquema.methods.enviarEmail= async function(asunto, cuerpo){
+    
+    const transport = await emailTransportConfigure();
+
+    // enviar el mail
+    const result = await transport.sendMail({
+        from: process.env.EMAIL_SERVICE_FROM,
+        to: this.email,
+        subject: asunto,
+        html: cuerpo,
+    })
+
+    result.getTestMessengeUrl=nodemailer.getTestMessageUrl(result);
+
+    return result;
 }
 
 // creo el modelo

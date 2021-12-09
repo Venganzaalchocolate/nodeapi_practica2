@@ -7,6 +7,7 @@ const utils =require('./lib/utils')
 const session = require('express-session')
 const LoginController=require('./controllers/loginController');
 const sessionAuth= require('./lib/sesionesControl')
+const jwtAuth = require('./lib/jwtAuth')
 const MongoStore= require('connect-mongo');
 
 const app = express();
@@ -29,11 +30,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
+const loginController = new LoginController();
 
 
 // rutas de mi API
-app.use('/api/articulos',   require('./routes/api/articulos'));
+app.use('/api/articulos',  jwtAuth, require('./routes/api/articulos'));
+app.post('/api/login', loginController.postJWT);
 
 //inicio de i18n 
 const i18n=require('./lib/i18n')
@@ -60,7 +62,7 @@ app.use((req,res,next)=> {
 // variables globales de las vistas
 app.locals.title = 'NodeAPI';
 
-const loginController = new LoginController();
+
 
 // rutas de mi webside
 app.use('/', require('./routes/index'));
