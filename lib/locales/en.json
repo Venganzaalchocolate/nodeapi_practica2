@@ -8,5 +8,9 @@
 	"Login": "Login",
 	"Invalid Credentials": "Invalid Credentials",
 	"Private": "Private",
-	"Logout": "Logout"
+	"Logout": "Logout",
+	"Email address": "Email address",
+	"We'll never share your email with anyone else.": "We'll never share your email with anyone else.",
+	"Password": "Password",
+	"Submit": "Submit"
 }

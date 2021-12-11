@@ -42,15 +42,15 @@ Instalar dependencias:
 `npm install`  
 
 Inicializar Base de Datos con 6 anuncios de prueba y un usuario para poder facilitar el acceso.
-`npm run bd`  
-    - Los datos del usuario son:
-      - email: user@example.com
-      - password: 1234
+`npm run bd`     
+    - Los datos del usuario son:    
+        `email: user@example.com`   
+        ` password: 1234`
 
 Iniciar la aplicación:  
 `npm start`  
 
-El puerto por defecto es el 3000, para cambiarlo solo debes acceder a la carpeta bin en el archivo www.js linea 15  
+El puerto por defecto es el 3000, para cambiarlo solo debes acceder a la carpeta bin en el archivo www.js linea 15      
 `var port = normalizePort(process.env.PORT || '3000');`  
 
 ## Conexión a la base de datos
@@ -63,21 +63,34 @@ En .env.example sustituir la ruta de ejemplo por la que deseas usar
 ## Rutas ⚙️
 
 Index:
-`http://localhost:3000/`
+`http://localhost:3000/`     
 - Una página (frontend) que muestra una lista de anuncios
-- Cada anuncio tendrá una foto pública y su correspondiente miniatura también publica
+- Cada anuncio tendrá una foto pública y su correspondiente miniatura también publica.    
+- Privado: `http://localhost:3000/privado` página de ejemplo en el frontend que solo se puede acceder si se ha iniciado sesión, además el botón para acceder queda oculto hasta que se hace login. 
 
-Login:
-`http://localhost:3000/login`    
-- Página frontend para iniciar sesión    
-`http://localhost:3000/api/login`    
-- Ruta para realizar peticiones POST al API y poder iniciar sesión
+Login:    
+- Página frontend para iniciar sesión  
+`http://localhost:3000/login`
+- Cuando se realiza el login en el frontend se envia un correo electrónico. Para cambiar los datos de acceso solo debe acceder al archivo .env y cambiar las variables.
+    `EMAIL_SERVICE_FROM=ejemplo@tupagina.com`    
+    `EMAIL_SERVICE_NAME=SendGrid`     
+    `EMAIL_SERVICE_USER=Username`    
+    `EMAIL_SERVICE_PASS=Password` 
+    `EMAIL_ENVIRONMENT= devlop(desarrollo) || production(producción)`   
 
-API:
+
+- Ruta para realizar peticiones POST al API y poder iniciar sesión   
+`http://localhost:3000/api/login`
+    
+
+
+API:   
 ATENCIÓN: Las rutas del API son privadas, se debe tener un token válido para acceder a ellas. Ejemplo: `http://localhost:3000/api/articulos?token=<tokenvalido>)`    
 
-`http://localhost:3000/api/articulos`    
 - Página que muestra una lista de anuncios en formato JSON
+`http://localhost:3000/api/articulos`    
+
+
 
 ## Internacionalización
 

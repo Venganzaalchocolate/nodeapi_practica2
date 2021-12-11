@@ -4,7 +4,7 @@
             "nombre": "Bike",
             "venta": true,
             "precio": 230.15,
-            "foto": "bike.jpg",
+            "foto": "8f7cb8e7-799b-4748-a28d-70aeaec7d018.jpg",
             "tags": [
                 "lifestyle",
                 "motor"
@@ -14,7 +14,7 @@
             "nombre": "iPhone 11",
             "venta": false,
             "precio": 486.00,
-            "foto": "iphone11.jpg",
+            "foto": "71a5aabf-9138-4e4a-b1ec-c9dd44104d20.jpg",
             "tags": [
                 "lifestyle",
                 "mobile"
@@ -24,7 +24,7 @@
             "nombre": "Xiaomi mi",
             "venta": true,
             "precio": 250,
-            "foto": "xiaomi.jpg",
+            "foto": "c2bd8a53-c04c-46fc-a39f-8fe26ed04f92.jpg",
             "tags": [
                 "lifestyle",
                 "mobile"
@@ -34,7 +34,7 @@
             "nombre": "Silla",
             "venta": false,
             "precio": 45,
-            "foto": "silla.jpg",
+            "foto": "96d73680-cc32-47cb-a798-fa6c61739a4e.jpg",
             "tags": [
                 "lifestyle"
             ]
@@ -43,7 +43,7 @@
             "nombre": "Teclado Corsair Cherry",
             "venta": true,
             "precio": 50,
-            "foto": "teclado.jpg",
+            "foto": "a341e754-b8e8-47c5-b613-6c9ed2cb1b5c.jpg",
             "tags": [
                 "lifestyle"
             ]
@@ -52,7 +52,7 @@
             "nombre": "Ratón Corsair",
             "venta": true,
             "precio": 20,
-            "foto": "raton.jpg",
+            "foto": "7ede29df-b21b-45bc-aaac-3b8d1ea96515.jpg",
             "tags": [
                 "lifestyle"
             ]

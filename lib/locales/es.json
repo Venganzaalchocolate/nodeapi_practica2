@@ -8,5 +8,9 @@
 	"Login": "Iniciar Sesión",
 	"Invalid Credentials": "Credenciales Erroneas",
 	"Private": "Privado",
-	"Logout": "Cerrar Sesión"
+	"Logout": "Cerrar Sesión",
+	"Email address": "Correo Electrónico",
+	"We'll never share your email with anyone else.": "Nunca compartiremos su correo electrónico con nadie más.",
+	"Password": "Contraseña",
+	"Submit": "Enviar"
 }
