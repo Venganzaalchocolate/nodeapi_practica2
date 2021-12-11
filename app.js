@@ -25,16 +25,16 @@ app.locals.title='NodeApi';
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+// login
 const loginController = new LoginController();
 
 
 // rutas de mi API
-app.use('/api/articulos',  jwtAuth, require('./routes/api/articulos'));
+app.use('/api/articulos', jwtAuth, require('./routes/api/articulos'));
 app.post('/api/login', loginController.postJWT);
 
 //inicio de i18n 
@@ -48,7 +48,7 @@ app.use(session({
   saveUninitialized: true,
   resave: false,
   cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 2 // dos días sin entrar en el servicio 
+    maxAge: 1000 * 60 * 60 * 24 * 15 // dos días sin entrar en el servicio 
   },
   store: MongoStore.create({mongoUrl: process.env.MONGODB_CONNECTION})
 }))
@@ -62,11 +62,8 @@ app.use((req,res,next)=> {
 // variables globales de las vistas
 app.locals.title = 'NodeAPI';
 
-
-
 // rutas de mi webside
 app.use('/', require('./routes/index'));
-app.use('/prueba', require('./routes/prueba'));
 app.use('/privado', sessionAuth, require('./routes/privado'));
 app.use('/cambio-idioma', require('./routes/cambio-idioma'));
 app.use('/users', require('./routes/users'));

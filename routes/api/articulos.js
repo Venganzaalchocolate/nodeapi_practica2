@@ -5,6 +5,9 @@ const express = require('express');
 const { noHay } = require('../../lib/utils');
 const router = express.Router();
 const Articulo = require('../../model/Articulo');
+const {upload} = require('../../lib/multer');
+const redimensionarImagen=require('../../lib/sharp')
+
 
 
 // Devuelve una lista de tags existentes
@@ -95,19 +98,43 @@ router.get('/:identificador', async (req, res, next)=> {
     }
 }) 
 
-//Crear un articulo POSTMAN:(post > body > x-www)
-router.post('/', async (req, res, next) => {
+// metodo POST con la lib Multer para qque se pueda subir un archivo
+// tipo formdata
+router.post('/', upload.single('foto'), async (req,res,next)=>{
     try {
-        const articuloData = req.body;
-        const articulo = new Articulo(articuloData);
+
+        
+
+
+        const datosArticulo=req.body
+        const imagen = req.file
+        
+
+        const articulo = new Articulo({
+            nombre:datosArticulo.nombre,
+            precio:datosArticulo.precio,
+            venta:datosArticulo.venta,
+            tags:datosArticulo.tags,
+            foto: `${await redimensionarImagen(imagen)}.jpg`
+        })
+        
         const articuloCreado = await articulo.save();
+        console.log(imagen)
 
-        res.status(201).json({result: articuloCreado});
+        
+        
 
-    } catch (err) {
-        next(err);
+
+
+
+        res.status(201).json({result: articulo});
+    } catch (error) {
+        next(error)
     }
+
+    
 })
+
 
 // Eliminar un articulo POSTMAN:(delete)
 router.delete('/:id', async (req, res, next) => {

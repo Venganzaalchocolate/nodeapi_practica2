@@ -22,6 +22,7 @@
                             <h5 class="fw-bolder"><%=articulos.nombre%></h5>
                             <!-- Product price-->
                             <%=__('Price')%>: <%=articulos.precio %> €
+                            <img src="/assets/miniatura_<%=articulos.foto%>" alt="..." />
                         </div>
                     </div>
                     <!-- Product actions-->
@@ -29,6 +30,7 @@
                         <div class="text-center"><% articulos.tags.forEach(element => { %>
                         <%=element.toUpperCase()%>
                         <% }) %></div>
+                        
                     </div>
                 </div>
             </div>

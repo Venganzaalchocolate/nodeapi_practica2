@@ -41,8 +41,11 @@ Debes estar dentro de la carpeta nodepop.
 Instalar dependencias:  
 `npm install`  
 
-Inicializar Base de Datos con 6 anuncios de prueba.  
+Inicializar Base de Datos con 6 anuncios de prueba y un usuario para poder facilitar el acceso.
 `npm run bd`  
+    - Los datos del usuario son:
+      - email: user@example.com
+      - password: 1234
 
 Iniciar la aplicación:  
 `npm start`  
@@ -55,17 +58,32 @@ El puerto por defecto es el 3000, para cambiarlo solo debes acceder a la carpeta
 Crear un archivo en la raiz del proyecto .env copiando el contenido de .env.example
 
 En .env.example sustituir la ruta de ejemplo por la que deseas usar
-  
+
+
 ## Rutas ⚙️
 
 Index:
 `http://localhost:3000/`
 - Una página (frontend) que muestra una lista de anuncios
+- Cada anuncio tendrá una foto pública y su correspondiente miniatura también publica
+
+Login:
+`http://localhost:3000/login`    
+- Página frontend para iniciar sesión    
+`http://localhost:3000/api/login`    
+- Ruta para realizar peticiones POST al API y poder iniciar sesión
 
 API:
-`http://localhost:3000/api/articulos`
+ATENCIÓN: Las rutas del API son privadas, se debe tener un token válido para acceder a ellas. Ejemplo: `http://localhost:3000/api/articulos?token=<tokenvalido>)`    
+
+`http://localhost:3000/api/articulos`    
 - Página que muestra una lista de anuncios en formato JSON
 
+## Internacionalización
+
+El frontend es multi-idioma, se puede seleccionar Castellano (ES) o Inglés (EN) en la parte superior izquiera y se cambiará automáticamente el idioma. 
+
+El idioma por defecto es el Inglés.
 
 ### Operaciones que realiza 🔩
 - Busqueda de anuncios con filtros por:

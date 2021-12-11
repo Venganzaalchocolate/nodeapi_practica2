@@ -7,7 +7,7 @@ const articuloSchema = mongoose.Schema({
     nombre: {type: String, index: true, required: '{PATH} is required!'},
     venta: {type: Boolean, index: true, required: '{PATH} is required!'},
     precio: {type: Number, index: true, required: '{PATH} is required!'},
-    foto: {type: String},
+    foto: {type: String },
     tags: [{type: String, index: true, enum: {
         values: ['work', 'lifestyle', 'motor', 'mobile' ],
         message: '{VALUE} is not supported'
