@@ -41,13 +41,13 @@ Debes estar dentro de la carpeta nodepop.
 Instalar dependencias:  
 `npm install`  
 
-Inicializar Base de Datos con 6 anuncios de prueba y un usuario para poder facilitar el acceso.
+Inicializar Base de Datos con 6 anuncios de prueba y un usuario para poder facilitar el acceso.     
 `npm run bd`     
     - Los datos del usuario son:    
         `email: user@example.com`   
         ` password: 1234`
 
-Iniciar la aplicación:  
+Iniciar la aplicación:      
 `npm start`  
 
 El puerto por defecto es el 3000, para cambiarlo solo debes acceder a la carpeta bin en el archivo www.js linea 15      
@@ -72,10 +72,10 @@ Login:
 - Página frontend para iniciar sesión  
 `http://localhost:3000/login`
 - Cuando se realiza el login en el frontend se envia un correo electrónico. Para cambiar los datos de acceso solo debe acceder al archivo .env y cambiar las variables.
-    `EMAIL_SERVICE_FROM=ejemplo@tupagina.com`    
+    `EMAIL_SERVICE_FROM=ejemplo@tupagina.com`        
     `EMAIL_SERVICE_NAME=SendGrid`     
     `EMAIL_SERVICE_USER=Username`    
-    `EMAIL_SERVICE_PASS=Password` 
+    `EMAIL_SERVICE_PASS=Password`     
     `EMAIL_ENVIRONMENT= devlop(desarrollo) || production(producción)`   
 
 
